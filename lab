@@ -1,0 +1,61 @@
+package labs;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.Polygon;
+import java.awt.Graphics;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class lab6 extends Frame {
+    lab6(String s){
+        super(s);
+    }
+        public void paint(Graphics g) {
+            Polygon p = new Polygon();
+            for (int i = 0; i < 6; i++)
+                p.addPoint((int) (100 + 50 * Math.cos(i * 2 * Math.PI / 6)),
+                        (int) (100 + 50 * Math.sin(i * 2 * Math.PI / 6)));
+            g.drawPolygon(p);
+            g.setColor(Color.RED);
+            g.fillPolygon(p);
+            Button b1 = new Button("Червоний");
+            b1.setBounds( 170, 100, 100, 30); add(b1);
+            b1.setBackground(Color.RED);
+            b1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    g.setColor(new Color(255, 0, 0));
+                    g.fillPolygon(p);
+                }
+            });
+            Button b2 = new Button("Жовтий");
+            b2.setBounds( 200, 200, 100, 30); add(b2);
+            b2.setBackground(Color.YELLOW);
+            b2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent s) {
+                    g.setColor(Color.YELLOW);
+                    g.fillPolygon(p);
+                }
+            });
+            Button b3 = new Button("Скасувати");
+            b3.setBounds( 100, 200, 100, 30); add(b3);
+            b3.setBackground(Color.WHITE);
+            b3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    g.setColor(new Color(255, 255, 255));
+                    g.fillPolygon(p);
+                }
+            });
+        }
+    public static void main(String[] args) {
+            Frame f = new lab6("Graphics");
+            f.setSize(300, 300);
+            f.setVisible(true);
+            f.addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent ev) {
+                }
+            });
+        }
+    }
