@@ -1,0 +1,63 @@
+package labs;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Random;
+
+public class aop3 {
+    static class Matrix {
+        private int rows;
+        private int cols;
+        private double a;
+        private double[][] array;
+        Scanner in = new Scanner(System.in);
+        public Matrix(){
+            rows = 2;
+            cols = 3;
+            array = new double[rows][cols];
+        };
+        public void Fill(){
+            Random randNum = new Random();
+            for (int i = 0; i <rows; i++){
+                for (int i = 0; i < 5; i++) {
+                    Arr[i] = randNum.nextInt();
+                }
+            }
+        };
+        public void Show(){
+        };
+        public void Multiply(){
+
+        };
+        public void Transpose(){
+
+        };
+        public void Sum(){
+
+        };
+    }
+    public class Main{
+        public void main(String[] args){
+            Scanner in = new Scanner(System.in);
+            boolean index = true;
+            while (index){
+                System.out.println("1 - Start operation;");
+                System.out.println("2 - Exit");
+                System.out.print("\nEnter a number;");
+                int j = in.nextInt();
+                if (j == 1){
+                    Matrix Arr = new Matrix();
+                    Arr.Fill();
+                    Arr.Show();
+                    Arr.Multiply();
+                    Arr.Show();
+                    Arr.Transpose();
+                    Arr.Sum();
+                    System.out.print("\nEnter a number;");
+                }
+                else {
+                    System.out.print("\nДо побачення!");
+                }
+            }
+        }
+    }
+}
