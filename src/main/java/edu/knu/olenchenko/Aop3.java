@@ -30,17 +30,9 @@ public class Aop3 {
 			return rows;
 		}
 
-		public int getCellValue(int col, int row) {
-			Objects.checkIndex(col, this.cols);
-			Objects.checkIndex(row, this.rows);
-			return this.arr[col][row];
-		};
-
-		public void setCellValue(int col, int row, int value) {
-			Objects.checkIndex(col, this.cols);
-			Objects.checkIndex(row, this.rows);
-			this.arr[col][row] = value;
-		};
+		public int[][] getArr() {
+			return arr;
+		}
 
 		private void fill() {
 			Random randNum = new Random();
@@ -72,7 +64,7 @@ public class Aop3 {
 			Matrix dst = new Matrix(this.rows, this.cols);
 			for (int j = 0; j < this.rows; j++) {
 				for (int i = 0; i < this.cols; i++) {
-					dst.setCellValue(j, i, arr[i][j]);
+					dst.getArr()[j][i] = arr[i][j];
 				}
 			}
 			return dst;
@@ -84,7 +76,7 @@ public class Aop3 {
 			}
 			for (int j = 0; j < this.rows; j++) {
 				for (int i = 0; i < this.cols; i++) {
-					arr[i][j] += another.getCellValue(i,j);
+					arr[i][j] += another.getArr()[i][j];
 				}
 			}
 		};
@@ -112,7 +104,7 @@ public class Aop3 {
 				transposed.show();
 
 				System.out.print("\nEnter a number;");
-			
+			} else {
 				loop = false;
 				System.out.print("\nДо побачення!");
 			}
